@@ -1,3 +1,5 @@
+import threading
+
 import cv2
 import rclpy
 from rclpy.node import Node
@@ -15,14 +17,24 @@ def gstreamer_pipeline(
     framerate=30,
     flip_method=0,
 ):
-    """Pipeline para cámara CSI en Jetson usando nvarguscamerasrc."""
+    """Pipeline para cámara CSI en Jetson usando nvarguscamerasrc.
+
+    tnr-mode=0 / ee-mode=0 desactivan el ruido temporal y el realce de bordes
+    del ISP, reduciendo la latencia de procesamiento de la cámara.
+    queue leaky=downstream descarta frames antiguos en lugar de acumularlos.
+    """
     return (
-        'nvarguscamerasrc sensor-id=%d ! '
+        'nvarguscamerasrc sensor-id=%d do-timestamp=true tnr-mode=0 ee-mode=0 ! '
         'video/x-raw(memory:NVMM), width=(int)%d, height=(int)%d, framerate=(fraction)%d/1 ! '
+        'queue max-size-buffers=1 leaky=downstream ! '
         'nvvidconv flip-method=%d ! '
-        'video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! '
+        'video/x-raw(memory:NVMM), width=(int)%d, height=(int)%d, format=(string)NV12 ! '
+        'queue max-size-buffers=1 leaky=downstream ! '
+        'nvvidconv ! '
+        'video/x-raw, format=(string)BGRx ! '
         'videoconvert ! '
-        'video/x-raw, format=(string)BGR ! appsink max-buffers=1 drop=true sync=false'
+        'video/x-raw, format=(string)BGR ! '
+        'appsink max-buffers=1 drop=true sync=false emit-signals=false'
         % (
             sensor_id,
             capture_width,
@@ -41,6 +53,9 @@ class CSICamera:
 
     line_follower importa esta clase para no ejecutar dos nodos que se peleen
     por la misma cámara CSI.
+
+    La captura corre en un hilo dedicado para que siempre haya el frame más
+    reciente disponible sin esperar al ciclo del timer de ROS.
     """
 
     def __init__(
@@ -71,10 +86,27 @@ class CSICamera:
         if not self.cap.isOpened():
             raise RuntimeError('No se pudo abrir la cámara CSI')
 
+        self._frame = None
+        self._ret = False
+        self._lock = threading.Lock()
+        self._running = True
+        self._thread = threading.Thread(target=self._capture_loop, daemon=True)
+        self._thread.start()
+
+    def _capture_loop(self):
+        while self._running:
+            ret, frame = self.cap.read()
+            with self._lock:
+                self._ret = ret
+                self._frame = frame
+
     def read(self):
-        return self.cap.read()
+        with self._lock:
+            return self._ret, self._frame
 
     def release(self):
+        self._running = False
+        self._thread.join(timeout=2.0)
         if self.cap is not None and self.cap.isOpened():
             self.cap.release()
 

@@ -99,6 +99,7 @@ class LineFollower(Node):
         self.last_traffic_multiplier = 1.0
         self.last_traffic_color = 'none'
         self.last_traffic_time = None
+        self.red_locked = False  # bloqueado hasta detectar verde
 
         if self.show_window:
             cv2.namedWindow(WINDOW_TITLE, cv2.WINDOW_AUTOSIZE)
@@ -112,17 +113,34 @@ class LineFollower(Node):
 
     def _update_traffic_state(self, traffic):
         now = self.get_clock().now()
+        color = traffic.color
 
-        if traffic.color in ('red', 'yellow', 'green'):
+        # Verde libera el bloqueo de rojo
+        if color == 'green' and self.red_locked:
+            self.red_locked = False
+            self.get_logger().info('Semáforo VERDE: reanudando marcha')
+
+        # Rojo activa el bloqueo indefinido
+        if color == 'red':
+            self.red_locked = True
+            self.last_traffic_color = 'red'
+            self.last_traffic_time = now
+
+        # Mientras esté bloqueado por rojo, parar siempre
+        if self.red_locked:
+            self.traffic_multiplier = 0.0
+            return 'red', 0.0, False
+
+        # Comportamiento normal para amarillo/verde/ninguno
+        if color in ('yellow', 'green'):
             self.traffic_multiplier = traffic.speed_multiplier
             self.last_traffic_multiplier = traffic.speed_multiplier
-            self.last_traffic_color = traffic.color
+            self.last_traffic_color = color
             self.last_traffic_time = now
-            return traffic.color, self.traffic_multiplier, False
+            return color, self.traffic_multiplier, False
 
-        # Si se perdió un rojo/amarillo recién visto, se mantiene un momento.
-        # Verde/no detección no bloquean.
-        if self.last_traffic_time is not None and self.last_traffic_color in ('red', 'yellow'):
+        # Mantener amarillo brevemente si se pierde de vista
+        if self.last_traffic_time is not None and self.last_traffic_color == 'yellow':
             elapsed = (now - self.last_traffic_time).nanoseconds * 1e-9
             if elapsed < self.traffic_hold_sec:
                 self.traffic_multiplier = self.last_traffic_multiplier
@@ -214,8 +232,9 @@ class LineFollower(Node):
             f'line:{status} dir:{self.filtered_direction:+.2f} '
             f'conf:{line.confidence:.2f} zebra:{line.zebra_detected}'
         )
+        lock_tag = '(LOCKED)' if self.red_locked else ('(hold)' if traffic_hold else '')
         txt2 = (
-            f'traffic:{traffic_color}' + ('(hold)' if traffic_hold else '') +
+            f'traffic:{traffic_color}{lock_tag}'
             f' mult:{traffic_mult:.2f} v:{v:.2f} w:{omega:+.2f}'
         )
 
