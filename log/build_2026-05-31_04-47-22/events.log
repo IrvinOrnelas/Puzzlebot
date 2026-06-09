@@ -1,0 +1,223 @@
+[0.000000] (-) TimerEvent: {}
+[0.003174] (-) JobUnselected: {'identifier': 'grabacionpista'}
+[0.003481] (-) JobUnselected: {'identifier': 'minireto3'}
+[0.003657] (-) JobUnselected: {'identifier': 'minireto4'}
+[0.004792] (-) JobUnselected: {'identifier': 'miniretoS6'}
+[0.005230] (-) JobUnselected: {'identifier': 'miniretoS7'}
+[0.006026] (-) JobUnselected: {'identifier': 'puzzlebot_msgs'}
+[0.006223] (-) JobUnselected: {'identifier': 'puzzlebot_ros'}
+[0.006443] (miniretoS8) JobQueued: {'identifier': 'miniretoS8', 'dependencies': OrderedDict()}
+[0.006652] (miniretoS8) JobStarted: {'identifier': 'miniretoS8'}
+[0.096604] (-) TimerEvent: {}
+[0.197488] (-) TimerEvent: {}
+[0.302295] (-) TimerEvent: {}
+[0.403359] (-) TimerEvent: {}
+[0.504145] (-) TimerEvent: {}
+[0.607706] (-) TimerEvent: {}
+[0.710833] (-) TimerEvent: {}
+[0.813646] (-) TimerEvent: {}
+[0.925534] (-) TimerEvent: {}
+[1.031487] (-) TimerEvent: {}
+[1.137615] (-) TimerEvent: {}
+[1.260560] (-) TimerEvent: {}
+[1.374218] (-) TimerEvent: {}
+[1.475755] (-) TimerEvent: {}
+[1.579064] (-) TimerEvent: {}
+[1.681170] (-) TimerEvent: {}
+[1.787885] (-) TimerEvent: {}
+[1.892998] (-) TimerEvent: {}
+[1.996991] (-) TimerEvent: {}
+[2.099169] (-) TimerEvent: {}
+[2.208170] (-) TimerEvent: {}
+[2.315828] (-) TimerEvent: {}
+[2.426976] (-) TimerEvent: {}
+[2.530700] (-) TimerEvent: {}
+[2.631842] (-) TimerEvent: {}
+[2.740394] (-) TimerEvent: {}
+[2.849122] (-) TimerEvent: {}
+[2.961490] (-) TimerEvent: {}
+[3.062780] (-) TimerEvent: {}
+[3.164589] (-) TimerEvent: {}
+[3.266181] (-) TimerEvent: {}
+[3.367788] (-) TimerEvent: {}
+[3.474522] (-) TimerEvent: {}
+[3.581918] (-) TimerEvent: {}
+[3.684701] (-) TimerEvent: {}
+[3.793271] (-) TimerEvent: {}
+[3.899309] (-) TimerEvent: {}
+[4.000702] (-) TimerEvent: {}
+[4.106629] (-) TimerEvent: {}
+[4.208083] (-) TimerEvent: {}
+[4.314174] (-) TimerEvent: {}
+[4.415917] (-) TimerEvent: {}
+[4.516884] (-) TimerEvent: {}
+[4.624632] (-) TimerEvent: {}
+[4.727609] (-) TimerEvent: {}
+[4.829694] (-) TimerEvent: {}
+[4.931253] (-) TimerEvent: {}
+[5.032890] (-) TimerEvent: {}
+[5.135274] (-) TimerEvent: {}
+[5.236800] (-) TimerEvent: {}
+[5.339580] (-) TimerEvent: {}
+[5.446954] (-) TimerEvent: {}
+[5.572555] (-) TimerEvent: {}
+[5.683354] (-) TimerEvent: {}
+[5.802486] (-) TimerEvent: {}
+[5.913192] (-) TimerEvent: {}
+[6.015908] (-) TimerEvent: {}
+[6.127044] (-) TimerEvent: {}
+[6.231125] (-) TimerEvent: {}
+[6.333038] (-) TimerEvent: {}
+[6.435560] (-) TimerEvent: {}
+[6.536359] (-) TimerEvent: {}
+[6.639801] (-) TimerEvent: {}
+[6.745962] (-) TimerEvent: {}
+[6.848623] (-) TimerEvent: {}
+[6.971226] (-) TimerEvent: {}
+[7.091453] (-) TimerEvent: {}
+[7.201996] (-) TimerEvent: {}
+[7.304665] (-) TimerEvent: {}
+[7.407974] (-) TimerEvent: {}
+[7.517852] (-) TimerEvent: {}
+[7.624051] (-) TimerEvent: {}
+[7.727265] (-) TimerEvent: {}
+[7.831657] (-) TimerEvent: {}
+[7.935580] (-) TimerEvent: {}
+[8.038943] (-) TimerEvent: {}
+[8.140442] (-) TimerEvent: {}
+[8.247685] (-) TimerEvent: {}
+[8.349842] (-) TimerEvent: {}
+[8.462123] (-) TimerEvent: {}
+[8.569203] (-) TimerEvent: {}
+[8.673061] (-) TimerEvent: {}
+[8.780626] (-) TimerEvent: {}
+[8.882882] (-) TimerEvent: {}
+[8.991258] (-) TimerEvent: {}
+[9.092597] (-) TimerEvent: {}
+[9.197654] (-) TimerEvent: {}
+[9.298707] (-) TimerEvent: {}
+[9.400335] (-) TimerEvent: {}
+[9.501657] (-) TimerEvent: {}
+[9.603038] (-) TimerEvent: {}
+[9.720054] (-) TimerEvent: {}
+[9.821004] (-) TimerEvent: {}
+[9.922021] (-) TimerEvent: {}
+[10.023253] (-) TimerEvent: {}
+[10.124299] (-) TimerEvent: {}
+[10.225782] (-) TimerEvent: {}
+[10.327217] (-) TimerEvent: {}
+[10.428669] (-) TimerEvent: {}
+[10.530147] (-) TimerEvent: {}
+[10.631514] (-) TimerEvent: {}
+[10.735304] (-) TimerEvent: {}
+[10.838448] (-) TimerEvent: {}
+[10.939552] (-) TimerEvent: {}
+[11.046183] (-) TimerEvent: {}
+[11.147962] (-) TimerEvent: {}
+[11.249551] (-) TimerEvent: {}
+[11.352111] (-) TimerEvent: {}
+[11.457776] (-) TimerEvent: {}
+[11.476064] (miniretoS8) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/miniretoS8', 'build', '--build-base', '/home/puzzlebot/ros2_ws/src/build/miniretoS8/build', 'install', '--record', '/home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log', '--single-version-externally-managed'], 'cwd': '/home/puzzlebot/ros2_ws/src/miniretoS8', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'GTK_CSD': '0', 'USER': 'puzzlebot', 'XDG_SEAT': 'seat0', 'SSH_AGENT_PID': '4948', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/puzzlebot/ros2_ws/install/puzzlebot_msgs/lib:/home/puzzlebot/ros2_packages_ws/install/micro_ros_agent/lib:/home/puzzlebot/ros2_packages_ws/install/micro_ros_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/puzzlebot', 'OLDPWD': '/home/puzzlebot/ros2_ws', 'DESKTOP_SESSION': 'LXDE', 'ROS_PYTHON_VERSION': '3', 'GTK_MODULES': 'gail:atk-bridge', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'MANDATORY_PATH': '/usr/share/gconf/ux-LXDE.mandatory.path', 'COLCON_PREFIX_PATH': '/home/puzzlebot/ros2_ws/install:/home/puzzlebot/ros2_packages_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'puzzlebot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'DEFAULTS_PATH': '/usr/share/gconf/ux-LXDE.default.path', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': 'c1', 'ROS_LOCALHOST_ONLY': '0', 'SAL_USE_VCLPLUGIN': 'gtk', 'PATH': '/opt/ros/humble/bin:/home/puzzlebot/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'GDM_LANG': 'en_GB', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session0', 'XDG_MENU_PREFIX': 'lxde-', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0.0', 'LD_PRELOAD': '/home/puzzlebot/.local/lib/python3.8/site-packages/torch/lib/libgomp-d22c30c5.so.1', 'LANG': 'en_GB.UTF-8', 'XDG_CURRENT_DESKTOP': 'LXDE', 'XDG_DATA_HOME': '/home/puzzlebot/.local/share', 'XDG_CONFIG_HOME': '/home/puzzlebot/.config', 'XDG_SESSION_DESKTOP': 'ux-LXDE', 'XAUTHORITY': '/home/puzzlebot/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AUTH_SOCK': '/tmp/ssh-kEm03CgB4fDB/agent.4483', 'XDG_GREETER_DATA_DIR': '/var/lib/lightdm-data/puzzlebot', 'AMENT_PREFIX_PATH': '/home/puzzlebot/ros2_ws/install/puzzlebot_ros:/home/puzzlebot/ros2_ws/install/puzzlebot_msgs:/home/puzzlebot/ros2_ws/install/miniretoS8:/home/puzzlebot/ros2_ws/install/miniretoS7:/home/puzzlebot/ros2_ws/install/miniretoS6:/home/puzzlebot/ros2_ws/install/minireto4:/home/puzzlebot/ros2_ws/install/minireto3:/home/puzzlebot/ros2_ws/install/grabacionpista:/home/puzzlebot/ros2_packages_ws/install/ros_deep_learning:/home/puzzlebot/ros2_packages_ws/install/micro_ros_setup:/home/puzzlebot/ros2_packages_ws/install/micro_ros_agent:/home/puzzlebot/ros2_packages_ws/install/micro_ros_msgs:/home/puzzlebot/ros2_packages_ws/install/camera_info_publisher:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ux-LXDE', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', '_LXSESSION_PID': '4483', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'XDG_VTNR': '7', 'PWD': '/home/puzzlebot/ros2_ws/src/build/miniretoS8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ux-LXDE:/etc/xdg', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/usr/share/gdm:/var/lib/menu-xdg:/usr/local/share/:/usr/share/:/usr/share/gdm/:/var/lib/menu-xdg/', 'PYTHONPATH': '/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/puzzlebot_ros/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/puzzlebot_msgs/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/miniretoS8/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/miniretoS7/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/miniretoS6/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/minireto4/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/minireto3/lib/python3.8/site-packages:/home/puzzlebot/ros2_ws/install/grabacionpista/lib/python3.8/site-packages:/home/puzzlebot/ros2_packages_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/opt/ros/humble/lib/python3.8/site-packages', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/puzzlebot/ros2_ws/install/puzzlebot_msgs:/home/puzzlebot/ros2_packages_ws/install/ros_deep_learning:/home/puzzlebot/ros2_packages_ws/install/micro_ros_setup:/home/puzzlebot/ros2_packages_ws/install/micro_ros_agent:/home/puzzlebot/ros2_packages_ws/install/micro_ros_msgs:/home/puzzlebot/ros2_packages_ws/install/camera_info_publisher'}, 'shell': False}
+[11.558138] (-) TimerEvent: {}
+[11.661545] (-) TimerEvent: {}
+[11.764724] (-) TimerEvent: {}
+[11.868680] (-) TimerEvent: {}
+[11.970279] (-) TimerEvent: {}
+[12.074401] (-) TimerEvent: {}
+[12.180586] (-) TimerEvent: {}
+[12.281525] (-) TimerEvent: {}
+[12.382278] (-) TimerEvent: {}
+[12.483484] (-) TimerEvent: {}
+[12.587978] (-) TimerEvent: {}
+[12.689458] (-) TimerEvent: {}
+[12.791635] (-) TimerEvent: {}
+[12.913461] (-) TimerEvent: {}
+[13.018917] (-) TimerEvent: {}
+[13.124496] (-) TimerEvent: {}
+[13.225993] (-) TimerEvent: {}
+[13.328389] (-) TimerEvent: {}
+[13.429918] (-) TimerEvent: {}
+[13.533033] (-) TimerEvent: {}
+[13.600823] (miniretoS8) StdoutLine: {'line': b'running egg_info\n'}
+[13.605957] (miniretoS8) StdoutLine: {'line': b'writing ../build/miniretoS8/miniretoS8.egg-info/PKG-INFO\n'}
+[13.609721] (miniretoS8) StdoutLine: {'line': b'writing dependency_links to ../build/miniretoS8/miniretoS8.egg-info/dependency_links.txt\n'}
+[13.610882] (miniretoS8) StdoutLine: {'line': b'writing entry points to ../build/miniretoS8/miniretoS8.egg-info/entry_points.txt\n'}
+[13.611530] (miniretoS8) StdoutLine: {'line': b'writing requirements to ../build/miniretoS8/miniretoS8.egg-info/requires.txt\n'}
+[13.612527] (miniretoS8) StdoutLine: {'line': b'writing top-level names to ../build/miniretoS8/miniretoS8.egg-info/top_level.txt\n'}
+[13.633221] (-) TimerEvent: {}
+[13.735132] (-) TimerEvent: {}
+[13.836515] (-) TimerEvent: {}
+[13.913571] (miniretoS8) StdoutLine: {'line': b"reading manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'\n"}
+[13.924133] (miniretoS8) StdoutLine: {'line': b"writing manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'\n"}
+[13.941555] (-) TimerEvent: {}
+[13.942677] (miniretoS8) StdoutLine: {'line': b'running build\n'}
+[13.943455] (miniretoS8) StdoutLine: {'line': b'running build_py\n'}
+[13.944164] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.946264] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/simple_camera.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.948302] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/line_detector.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.960182] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/yolo.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.968268] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/line_follower_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.985398] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/traffic_light_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[13.998212] (miniretoS8) StdoutLine: {'line': b'copying miniretoS8/processor_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8\n'}
+[14.000989] (miniretoS8) StdoutLine: {'line': b'running install\n'}
+[14.008522] (miniretoS8) StdoutLine: {'line': b'running install_lib\n'}
+[14.015444] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.018271] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/simple_camera.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.022992] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/line_detector.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.027379] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/yolo.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.028116] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/line_follower_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.028729] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/traffic_light_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.030522] (miniretoS8) StdoutLine: {'line': b'copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/processor_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8\n'}
+[14.038989] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/camera_node.py to camera_node.cpython-38.pyc\n'}
+[14.042382] (-) TimerEvent: {}
+[14.069336] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/simple_camera.py to simple_camera.cpython-38.pyc\n'}
+[14.101435] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/line_detector.py to line_detector.cpython-38.pyc\n'}
+[14.112802] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/yolo.py to yolo.cpython-38.pyc\n'}
+[14.118196] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/line_follower_node.py to line_follower_node.cpython-38.pyc\n'}
+[14.126575] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/traffic_light_node.py to traffic_light_node.cpython-38.pyc\n'}
+[14.139019] (miniretoS8) StdoutLine: {'line': b'byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/processor_node.py to processor_node.cpython-38.pyc\n'}
+[14.146640] (-) TimerEvent: {}
+[14.148760] (miniretoS8) StdoutLine: {'line': b'running install_data\n'}
+[14.158258] (miniretoS8) StdoutLine: {'line': b'copying package.xml -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8\n'}
+[14.161251] (miniretoS8) StdoutLine: {'line': b'running install_egg_info\n'}
+[14.165823] (miniretoS8) StdoutLine: {'line': b"removing '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[14.172621] (miniretoS8) StdoutLine: {'line': b'Copying ../build/miniretoS8/miniretoS8.egg-info to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info\n'}
+[14.192217] (miniretoS8) StdoutLine: {'line': b'running install_scripts\n'}
+[14.247052] (-) TimerEvent: {}
+[14.325964] (miniretoS8) StdoutLine: {'line': b'Installing camera_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8\n'}
+[14.328252] (miniretoS8) StdoutLine: {'line': b'Installing line_follower_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8\n'}
+[14.331309] (miniretoS8) StdoutLine: {'line': b'Installing processor_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8\n'}
+[14.334015] (miniretoS8) StdoutLine: {'line': b'Installing traffic_light_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8\n'}
+[14.338460] (miniretoS8) StdoutLine: {'line': b"writing list of installed files to '/home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log'\n"}
+[14.347251] (-) TimerEvent: {}
+[14.448866] (-) TimerEvent: {}
+[14.514749] (miniretoS8) CommandEnded: {'returncode': 0}
+[14.549067] (-) TimerEvent: {}
+[14.667521] (-) TimerEvent: {}
+[14.776571] (-) TimerEvent: {}
+[14.883788] (-) TimerEvent: {}
+[14.993773] (-) TimerEvent: {}
+[15.096499] (-) TimerEvent: {}
+[15.197720] (-) TimerEvent: {}
+[15.303533] (-) TimerEvent: {}
+[15.405496] (-) TimerEvent: {}
+[15.514002] (-) TimerEvent: {}
+[15.615103] (-) TimerEvent: {}
+[15.725247] (-) TimerEvent: {}
+[15.831457] (-) TimerEvent: {}
+[15.939445] (-) TimerEvent: {}
+[16.045723] (-) TimerEvent: {}
+[16.169551] (-) TimerEvent: {}
+[16.299946] (-) TimerEvent: {}
+[16.404824] (-) TimerEvent: {}
+[16.521414] (-) TimerEvent: {}
+[16.623226] (-) TimerEvent: {}
+[16.725032] (-) TimerEvent: {}
+[16.826247] (-) TimerEvent: {}
+[16.935567] (-) TimerEvent: {}
+[17.045559] (-) TimerEvent: {}
+[17.156735] (-) TimerEvent: {}
+[17.278900] (-) TimerEvent: {}
+[17.389702] (-) TimerEvent: {}
+[17.408774] (miniretoS8) JobEnded: {'identifier': 'miniretoS8', 'rc': 0}
+[17.434414] (-) EventReactorShutdown: {}

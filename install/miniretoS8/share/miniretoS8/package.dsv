@@ -1,0 +1,6 @@
+source;share/miniretoS8/hook/pythonpath.ps1
+source;share/miniretoS8/hook/pythonpath.dsv
+source;share/miniretoS8/hook/pythonpath.sh
+source;share/miniretoS8/hook/ament_prefix_path.ps1
+source;share/miniretoS8/hook/ament_prefix_path.dsv
+source;share/miniretoS8/hook/ament_prefix_path.sh

@@ -1,0 +1,24 @@
+[4.271s] Invoking command in '/home/puzzlebot/ros2_ws/src/miniretoS8': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed
+[5.404s] running egg_info
+[5.408s] writing ../build/miniretoS8/miniretoS8.egg-info/PKG-INFO
+[5.408s] writing dependency_links to ../build/miniretoS8/miniretoS8.egg-info/dependency_links.txt
+[5.409s] writing entry points to ../build/miniretoS8/miniretoS8.egg-info/entry_points.txt
+[5.410s] writing requirements to ../build/miniretoS8/miniretoS8.egg-info/requires.txt
+[5.410s] writing top-level names to ../build/miniretoS8/miniretoS8.egg-info/top_level.txt
+[5.574s] reading manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[5.578s] writing manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[5.579s] running build
+[5.580s] running build_py
+[5.580s] copying miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[5.581s] running install
+[5.583s] running install_lib
+[5.588s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[5.591s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/camera_node.py to camera_node.cpython-38.pyc
+[5.599s] running install_data
+[5.633s] running install_egg_info
+[5.636s] removing '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info' (and everything under it)
+[5.637s] Copying ../build/miniretoS8/miniretoS8.egg-info to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info
+[5.642s] running install_scripts
+[5.710s] Installing camera_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8
+[5.711s] writing list of installed files to '/home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log'
+[5.810s] Invoked command in '/home/puzzlebot/ros2_ws/src/miniretoS8' returned '0': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed

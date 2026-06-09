@@ -1,0 +1,221 @@
+[12.457s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'miniretoS8']
+[12.457s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f86725c40>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=['miniretoS8'], packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=4, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f86725c40>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f8631ba60>)
+[12.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[12.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[12.969s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[12.969s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[12.969s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[12.969s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[12.969s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/puzzlebot/ros2_ws/src'
+[12.970s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[12.970s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[12.970s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[12.971s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[13.017s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[13.017s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[13.018s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[13.018s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[13.018s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[13.019s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[13.019s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[13.019s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[13.020s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['ignore', 'ignore_ament_install']
+[13.020s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'ignore'
+[13.020s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'ignore_ament_install'
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['colcon_pkg']
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'colcon_pkg'
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['colcon_meta']
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'colcon_meta'
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['ros']
+[13.021s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'ros'
+[13.022s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['cmake', 'python']
+[13.022s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'cmake'
+[13.022s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'python'
+[13.022s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extensions ['python_setup_py']
+[13.023s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos) by extension 'python_setup_py'
+[13.023s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['ignore', 'ignore_ament_install']
+[13.024s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'ignore'
+[13.024s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'ignore_ament_install'
+[13.024s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['colcon_pkg']
+[13.024s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'colcon_pkg'
+[13.025s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['colcon_meta']
+[13.025s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'colcon_meta'
+[13.025s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['ros']
+[13.025s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'ros'
+[13.025s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['cmake', 'python']
+[13.026s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'cmake'
+[13.026s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'python'
+[13.026s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extensions ['python_setup_py']
+[13.026s] Level 1:colcon.colcon_core.package_identification:_identify(capturafotos/tomas) by extension 'python_setup_py'
+[13.026s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extensions ['ignore', 'ignore_ament_install']
+[13.027s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extension 'ignore'
+[13.027s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extension 'ignore_ament_install'
+[13.027s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extensions ['colcon_pkg']
+[13.027s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extension 'colcon_pkg'
+[13.028s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extensions ['colcon_meta']
+[13.028s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extension 'colcon_meta'
+[13.028s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extensions ['ros']
+[13.028s] Level 1:colcon.colcon_core.package_identification:_identify(grabacionpista) by extension 'ros'
+[13.037s] DEBUG:colcon.colcon_core.package_identification:Package 'grabacionpista' with type 'ros.ament_python' and name 'grabacionpista'
+[13.038s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[13.039s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[13.039s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[13.040s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[13.041s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[13.041s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[13.041s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extensions ['ignore', 'ignore_ament_install']
+[13.042s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extension 'ignore'
+[13.042s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extension 'ignore_ament_install'
+[13.042s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extensions ['colcon_pkg']
+[13.042s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extension 'colcon_pkg'
+[13.043s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extensions ['colcon_meta']
+[13.043s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extension 'colcon_meta'
+[13.043s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extensions ['ros']
+[13.043s] Level 1:colcon.colcon_core.package_identification:_identify(minireto3) by extension 'ros'
+[13.045s] DEBUG:colcon.colcon_core.package_identification:Package 'minireto3' with type 'ros.ament_python' and name 'minireto3'
+[13.046s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extensions ['ignore', 'ignore_ament_install']
+[13.046s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extension 'ignore'
+[13.047s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extension 'ignore_ament_install'
+[13.047s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extensions ['colcon_pkg']
+[13.047s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extension 'colcon_pkg'
+[13.047s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extensions ['colcon_meta']
+[13.047s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extension 'colcon_meta'
+[13.048s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extensions ['ros']
+[13.048s] Level 1:colcon.colcon_core.package_identification:_identify(minireto4) by extension 'ros'
+[13.050s] DEBUG:colcon.colcon_core.package_identification:Package 'minireto4' with type 'ros.ament_python' and name 'minireto4'
+[13.050s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extensions ['ignore', 'ignore_ament_install']
+[13.050s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extension 'ignore'
+[13.051s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extension 'ignore_ament_install'
+[13.051s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extensions ['colcon_pkg']
+[13.051s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extension 'colcon_pkg'
+[13.051s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extensions ['colcon_meta']
+[13.051s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extension 'colcon_meta'
+[13.052s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extensions ['ros']
+[13.052s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS6) by extension 'ros'
+[13.053s] DEBUG:colcon.colcon_core.package_identification:Package 'miniretoS6' with type 'ros.ament_python' and name 'miniretoS6'
+[13.054s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extensions ['ignore', 'ignore_ament_install']
+[13.054s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extension 'ignore'
+[13.055s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extension 'ignore_ament_install'
+[13.055s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extensions ['colcon_pkg']
+[13.055s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extension 'colcon_pkg'
+[13.055s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extensions ['colcon_meta']
+[13.055s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extension 'colcon_meta'
+[13.056s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extensions ['ros']
+[13.056s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS7) by extension 'ros'
+[13.059s] DEBUG:colcon.colcon_core.package_identification:Package 'miniretoS7' with type 'ros.ament_python' and name 'miniretoS7'
+[13.060s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['ignore', 'ignore_ament_install']
+[13.060s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'ignore'
+[13.061s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'ignore_ament_install'
+[13.061s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['colcon_pkg']
+[13.061s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'colcon_pkg'
+[13.061s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['colcon_meta']
+[13.062s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'colcon_meta'
+[13.062s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['ros']
+[13.062s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'ros'
+[13.066s] DEBUG:colcon.colcon_core.package_identification:Found ROS schema reference in package manifest in 'miniretoS8'
+[13.066s] WARNING:colcon.colcon_core.package_identification:Failed to parse ROS package manifest in 'miniretoS8': Error(s) in package 'miniretoS8/package.xml':
+Invalid email "Irvin Ornelas" for person "puzzlebot"
+[13.067s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['cmake', 'python']
+[13.067s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'cmake'
+[13.067s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'python'
+[13.068s] DEBUG:colcon.colcon_core.package_identification:Python package in 'miniretoS8' passes arguments to the setup() function which requires a different identification extension than 'python'
+[13.068s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extensions ['python_setup_py']
+[13.068s] Level 1:colcon.colcon_core.package_identification:_identify(miniretoS8) by extension 'python_setup_py'
+[14.191s] DEBUG:colcon.colcon_core.package_identification:Package 'miniretoS8' with type 'python' and name 'miniretoS8'
+[14.191s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extensions ['ignore', 'ignore_ament_install']
+[14.192s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extension 'ignore'
+[14.192s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extension 'ignore_ament_install'
+[14.193s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extensions ['colcon_pkg']
+[14.193s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extension 'colcon_pkg'
+[14.193s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extensions ['colcon_meta']
+[14.193s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extension 'colcon_meta'
+[14.194s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extensions ['ros']
+[14.194s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_msgs) by extension 'ros'
+[14.196s] DEBUG:colcon.colcon_core.package_identification:Package 'puzzlebot_msgs' with type 'ros.ament_cmake' and name 'puzzlebot_msgs'
+[14.197s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extensions ['ignore', 'ignore_ament_install']
+[14.197s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extension 'ignore'
+[14.197s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extension 'ignore_ament_install'
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extensions ['colcon_pkg']
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extension 'colcon_pkg'
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extensions ['colcon_meta']
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extension 'colcon_meta'
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extensions ['ros']
+[14.198s] Level 1:colcon.colcon_core.package_identification:_identify(puzzlebot_ros) by extension 'ros'
+[14.201s] DEBUG:colcon.colcon_core.package_identification:Package 'puzzlebot_ros' with type 'ros.ament_python' and name 'puzzlebot_ros'
+[14.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[14.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[14.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[14.201s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[14.202s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[14.907s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'grabacionpista' in 'grabacionpista'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'minireto3' in 'minireto3'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'minireto4' in 'minireto4'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'miniretoS6' in 'miniretoS6'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'miniretoS7' in 'miniretoS7'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'puzzlebot_msgs' in 'puzzlebot_msgs'
+[14.908s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'puzzlebot_ros' in 'puzzlebot_ros'
+[15.326s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[15.326s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[15.797s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/puzzlebot/ros2_ws/install
+[16.015s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 5 installed packages in /home/puzzlebot/ros2_packages_ws/install
+[16.234s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 276 installed packages in /opt/ros/humble
+[16.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[17.056s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_args' from command line to 'None'
+[17.057s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_target' from command line to 'None'
+[17.057s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[17.057s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_clean_cache' from command line to 'False'
+[17.057s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_clean_first' from command line to 'False'
+[17.057s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'cmake_force_configure' from command line to 'False'
+[17.058s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'ament_cmake_args' from command line to 'None'
+[17.058s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'catkin_cmake_args' from command line to 'None'
+[17.058s] Level 5:colcon.colcon_core.verb:set package 'miniretoS8' build argument 'catkin_skip_building_tests' from command line to 'False'
+[17.058s] DEBUG:colcon.colcon_core.verb:Building package 'miniretoS8' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/puzzlebot/ros2_ws/src/build/miniretoS8', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/puzzlebot/ros2_ws/src/install/miniretoS8', 'merge_install': False, 'path': '/home/puzzlebot/ros2_ws/src/miniretoS8', 'symlink_install': False, 'test_result_base': None}
+[17.265s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[17.477s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[17.478s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/puzzlebot/ros2_ws/src/miniretoS8'
+[17.751s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[17.752s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[17.752s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[21.751s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/puzzlebot/ros2_ws/src/miniretoS8': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed
+[23.291s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/puzzlebot/ros2_ws/src/miniretoS8' returned '0': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed
+[23.593s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8' for CMake module files
+[23.595s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8' for CMake config files
+[23.600s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib'
+[23.601s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8/bin'
+[23.601s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/pkgconfig/miniretoS8.pc'
+[23.602s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages'
+[23.604s] Level 1:colcon.colcon_core.shell:create_environment_hook('miniretoS8', 'pythonpath')
+[23.825s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/hook/pythonpath.ps1'
+[23.827s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/hook/pythonpath.dsv'
+[23.829s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/hook/pythonpath.sh'
+[23.832s] Level 1:colcon.colcon_core.environment:checking '/home/puzzlebot/ros2_ws/src/install/miniretoS8/bin'
+[23.832s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(miniretoS8)
+[24.050s] INFO:colcon.colcon_core.shell:Creating package script '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/package.ps1'
+[24.053s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/package.dsv'
+[24.056s] INFO:colcon.colcon_core.shell:Creating package script '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/package.sh'
+[24.059s] INFO:colcon.colcon_core.shell:Creating package script '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/package.bash'
+[24.063s] INFO:colcon.colcon_core.shell:Creating package script '/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8/package.zsh'
+[24.067s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/puzzlebot/ros2_ws/src/install/miniretoS8/share/colcon-core/packages/miniretoS8)
+[24.069s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[24.071s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[24.071s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[24.071s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[24.323s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[24.323s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[24.324s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[24.372s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[24.608s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/puzzlebot/ros2_ws/src/install/local_setup.ps1'
+[24.612s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/puzzlebot/ros2_ws/src/install/_local_setup_util_ps1.py'
+[24.619s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/puzzlebot/ros2_ws/src/install/setup.ps1'
+[24.897s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/puzzlebot/ros2_ws/src/install/local_setup.sh'
+[24.900s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/puzzlebot/ros2_ws/src/install/_local_setup_util_sh.py'
+[24.902s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/puzzlebot/ros2_ws/src/install/setup.sh'
+[25.185s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/puzzlebot/ros2_ws/src/install/local_setup.bash'
+[25.189s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/puzzlebot/ros2_ws/src/install/setup.bash'
+[25.441s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/puzzlebot/ros2_ws/src/install/local_setup.zsh'
+[25.444s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/puzzlebot/ros2_ws/src/install/setup.zsh'

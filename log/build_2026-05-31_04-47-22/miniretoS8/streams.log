@@ -1,0 +1,46 @@
+[11.472s] Invoking command in '/home/puzzlebot/ros2_ws/src/miniretoS8': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed
+[13.596s] running egg_info
+[13.602s] writing ../build/miniretoS8/miniretoS8.egg-info/PKG-INFO
+[13.604s] writing dependency_links to ../build/miniretoS8/miniretoS8.egg-info/dependency_links.txt
+[13.605s] writing entry points to ../build/miniretoS8/miniretoS8.egg-info/entry_points.txt
+[13.606s] writing requirements to ../build/miniretoS8/miniretoS8.egg-info/requires.txt
+[13.606s] writing top-level names to ../build/miniretoS8/miniretoS8.egg-info/top_level.txt
+[13.909s] reading manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[13.934s] writing manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[13.937s] running build
+[13.937s] running build_py
+[13.938s] copying miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.940s] copying miniretoS8/simple_camera.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.953s] copying miniretoS8/line_detector.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.954s] copying miniretoS8/yolo.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.962s] copying miniretoS8/line_follower_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.981s] copying miniretoS8/traffic_light_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.992s] copying miniretoS8/processor_node.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[13.995s] running install
+[14.002s] running install_lib
+[14.009s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/camera_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.012s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/simple_camera.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.020s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/line_detector.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.021s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/yolo.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.022s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/line_follower_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.022s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/traffic_light_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.024s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/processor_node.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[14.035s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/camera_node.py to camera_node.cpython-38.pyc
+[14.063s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/simple_camera.py to simple_camera.cpython-38.pyc
+[14.095s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/line_detector.py to line_detector.cpython-38.pyc
+[14.107s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/yolo.py to yolo.cpython-38.pyc
+[14.112s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/line_follower_node.py to line_follower_node.cpython-38.pyc
+[14.120s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/traffic_light_node.py to traffic_light_node.cpython-38.pyc
+[14.140s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/processor_node.py to processor_node.cpython-38.pyc
+[14.151s] running install_data
+[14.154s] copying package.xml -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8
+[14.155s] running install_egg_info
+[14.160s] removing '/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info' (and everything under it)
+[14.176s] Copying ../build/miniretoS8/miniretoS8.egg-info to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info
+[14.186s] running install_scripts
+[14.320s] Installing camera_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8
+[14.322s] Installing line_follower_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8
+[14.325s] Installing processor_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8
+[14.328s] Installing traffic_light_node script to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/miniretoS8
+[14.332s] writing list of installed files to '/home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log'
+[14.510s] Invoked command in '/home/puzzlebot/ros2_ws/src/miniretoS8' returned '0': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed

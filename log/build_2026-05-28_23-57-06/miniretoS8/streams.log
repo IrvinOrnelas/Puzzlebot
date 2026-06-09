@@ -1,0 +1,35 @@
+[4.549s] Invoking command in '/home/puzzlebot/ros2_ws/src/miniretoS8': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed
+[5.992s] running egg_info
+[5.993s] creating ../build/miniretoS8/miniretoS8.egg-info
+[5.994s] writing ../build/miniretoS8/miniretoS8.egg-info/PKG-INFO
+[5.995s] writing dependency_links to ../build/miniretoS8/miniretoS8.egg-info/dependency_links.txt
+[5.996s] writing entry points to ../build/miniretoS8/miniretoS8.egg-info/entry_points.txt
+[5.996s] writing requirements to ../build/miniretoS8/miniretoS8.egg-info/requires.txt
+[5.997s] writing top-level names to ../build/miniretoS8/miniretoS8.egg-info/top_level.txt
+[5.998s] writing manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[6.172s] reading manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[6.175s] writing manifest file '../build/miniretoS8/miniretoS8.egg-info/SOURCES.txt'
+[6.176s] running build
+[6.177s] running build_py
+[6.178s] creating /home/puzzlebot/ros2_ws/src/build/miniretoS8/build
+[6.178s] creating /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib
+[6.178s] creating /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[6.179s] copying miniretoS8/__init__.py -> /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8
+[6.179s] running install
+[6.181s] running install_lib
+[6.185s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[6.186s] copying /home/puzzlebot/ros2_ws/src/build/miniretoS8/build/lib/miniretoS8/__init__.py -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8
+[6.188s] byte-compiling /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8/__init__.py to __init__.cpython-38.pyc
+[6.193s] running install_data
+[6.196s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/share
+[6.196s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/ament_index
+[6.197s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/ament_index/resource_index
+[6.197s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/ament_index/resource_index/packages
+[6.203s] copying resource/miniretoS8 -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/ament_index/resource_index/packages
+[6.203s] creating /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8
+[6.204s] copying package.xml -> /home/puzzlebot/ros2_ws/src/install/miniretoS8/share/miniretoS8
+[6.204s] running install_egg_info
+[6.208s] Copying ../build/miniretoS8/miniretoS8.egg-info to /home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages/miniretoS8-0.0.0-py3.8.egg-info
+[6.217s] running install_scripts
+[6.291s] writing list of installed files to '/home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log'
+[6.398s] Invoked command in '/home/puzzlebot/ros2_ws/src/miniretoS8' returned '0': PYTHONPATH=/home/puzzlebot/ros2_ws/src/build/miniretoS8/prefix_override:/home/puzzlebot/ros2_ws/src/install/miniretoS8/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/miniretoS8 build --build-base /home/puzzlebot/ros2_ws/src/build/miniretoS8/build install --record /home/puzzlebot/ros2_ws/src/build/miniretoS8/install.log --single-version-externally-managed

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Dict, Optional, Tuple
+import math
 
 import cv2
 import numpy as np
@@ -455,4 +456,108 @@ def draw_traffic_light(vis: np.ndarray, traffic: TrafficLightResult) -> np.ndarr
         2,
     )
     return vis
+
+
+# -----------------------------
+# Detección de paso de cebra
+# -----------------------------
+
+_ZEBRA_DIST_TOLERANCE  = 30
+_ZEBRA_RELATIVE_FACTOR = 2.5
+_ZEBRA_MIN_ALIGNED     = 4
+_ZEBRA_MAX_BLOB_AREA   = 2500
+
+
+def _dist_point_to_line(px, py, x1, y1, x2, y2):
+    dx, dy = x2 - x1, y2 - y1
+    denom  = math.sqrt(dx * dx + dy * dy)
+    if denom == 0:
+        return math.sqrt((px - x1) ** 2 + (py - y1) ** 2)
+    return abs(dy * px - dx * py + x2 * y1 - y2 * x1) / denom
+
+
+def find_zebra(img, roi_y_start=0.60, min_blob_area=635, max_blob_area=_ZEBRA_MAX_BLOB_AREA):
+    """
+    Detecta paso de cebra buscando grupos de manchas oscuras alineadas.
+
+    Returns:
+        vis         -- copia del original con anotaciones
+        detected    -- bool
+        zebra_y_pos -- posición vertical normalizada: 0=centro, +1=arriba, -1=abajo
+    """
+    h, w       = img.shape[:2]
+    crop_start = int(h * roi_y_start)
+    roi        = img[crop_start:, :].copy()
+
+    gray  = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+    block = _odd(min(151, max(41, roi.shape[1] // 5)))
+    binary = cv2.adaptiveThreshold(
+        gray, 255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY_INV,
+        blockSize=block, C=10,
+    )
+
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
+    eroded = cv2.erode(binary, kernel, iterations=2)
+
+    contours, _ = cv2.findContours(eroded, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    centroids = []
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        if min_blob_area < area < max_blob_area:
+            M = cv2.moments(cnt)
+            if M['m00'] != 0:
+                cx = int(M['m10'] / M['m00'])
+                cy = int(M['m01'] / M['m00'])
+                centroids.append((cx, cy, area))
+
+    pts         = [(cx, cy) for cx, cy, _ in centroids]
+    zebra_group = []
+    for i in range(len(pts)):
+        for j in range(i + 1, len(pts)):
+            x1, y1 = pts[i]
+            x2, y2 = pts[j]
+            with_dist = [
+                (cx, cy, _dist_point_to_line(cx, cy, x1, y1, x2, y2))
+                for cx, cy in pts
+            ]
+            candidates = [(cx, cy, d) for cx, cy, d in with_dist if d <= _ZEBRA_DIST_TOLERANCE]
+            if len(candidates) < _ZEBRA_MIN_ALIGNED:
+                continue
+            dvals    = sorted(d for _, _, d in candidates)
+            median_d = dvals[len(dvals) // 2]
+            adaptive = max(median_d * _ZEBRA_RELATIVE_FACTOR, 1.0)
+            group    = [(cx, cy) for cx, cy, d in candidates if d <= adaptive]
+            if len(group) >= _ZEBRA_MIN_ALIGNED and len(group) > len(zebra_group):
+                zebra_group = group
+
+    detected = len(zebra_group) >= _ZEBRA_MIN_ALIGNED
+
+    zebra_y_pos = 0.0
+    if detected:
+        mean_cy_roi = sum(cy for _, cy in zebra_group) / len(zebra_group)
+        mean_cy_img = mean_cy_roi + crop_start
+        zebra_y_pos = -((mean_cy_img / (h / 2)) - 1.0)
+
+    vis = img.copy()
+    for cx, cy, _ in centroids:
+        cv2.circle(vis, (cx, cy + crop_start), 5, (0, 0, 255), -1)
+
+    if detected:
+        for cx, cy in zebra_group:
+            cv2.circle(vis, (cx, cy + crop_start), 8, (0, 255, 255), 2)
+        gs = sorted(zebra_group, key=lambda p: p[0])
+        p1 = (gs[0][0], gs[0][1] + crop_start)
+        p2 = (gs[-1][0], gs[-1][1] + crop_start)
+        cv2.line(vis, p1, p2, (0, 255, 255), 2)
+        mid = gs[len(gs) // 2]
+        cv2.putText(
+            vis, f'ZEBRA  y={zebra_y_pos:+.2f}',
+            (mid[0] + 8, mid[1] + crop_start - 8),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2,
+        )
+
+    return vis, detected, zebra_y_pos
 

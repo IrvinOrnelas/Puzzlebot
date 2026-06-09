@@ -1,0 +1,6 @@
+[console_scripts]
+camera_node = miniretoS8.camera_node:main
+line_follower_node = miniretoS8.line_follower_node:main
+processor_node = miniretoS8.processor_node:main
+traffic_light_node = miniretoS8.traffic_light_node:main
+
