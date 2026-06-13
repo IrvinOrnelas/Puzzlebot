@@ -135,25 +135,6 @@ source install/setup.bash
 
 ## Ejecución
 
-### Launch unificado (un solo terminal)
-
-```bash
-ros2 launch miniretoS8 miniretoS8_launch.py
-```
-
-### Launch con tmux (terminales separados, recomendado en Jetson)
-
-```bash
-ros2 launch miniretoS8 autonomy_launch.py
-```
-
-Abre una sesión tmux con tres ventanas: `traffic_light_node`, `processor_node` y `line_follower_node`.
-La cámara debe lanzarse aparte si se requiere:
-
-```bash
-ros2 run miniretoS8 camera_node
-```
-
 ### Nodos individuales
 
 ```bash
