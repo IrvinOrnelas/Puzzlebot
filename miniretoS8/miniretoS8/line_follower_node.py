@@ -48,7 +48,7 @@ class LineFollowerNode(Node):
         self.declare_parameter('error_deadband', 0.0)
         self.declare_parameter('lost_speed_scale', 0.65)
         self.declare_parameter('stop_when_lost', False)
-        self.declare_parameter('show_window', True)
+        self.declare_parameter('show_window', False)
 
         # Zebra: si no hay señal, ir recto.
         self.declare_parameter('zebra_speed', 0.72)
@@ -56,6 +56,7 @@ class LineFollowerNode(Node):
         self.declare_parameter('zebra_extra_advance_sec', 1.39)
         self.declare_parameter('zebra_validation_timeout', 2.0)
         self.declare_parameter('zebra_advance_after_signal_sec', 2.08)
+        self.declare_parameter('zebra_advance_turn_sec', 4.86)
         self.declare_parameter('zebra_forward_action_sec', 2.78)
         self.declare_parameter('zebra_roi_y_start', 0.75)
         self.declare_parameter('zebra_min_blob_area', 200.0)
@@ -70,6 +71,8 @@ class LineFollowerNode(Node):
         self.declare_parameter('turn_hold', 1.10)
         self.declare_parameter('turn_omega', 0.30)
         self.declare_parameter('turn_linear', 0.025)
+        self.declare_parameter('zebra_turn_angle', 1.57)
+        self.declare_parameter('zebra_turn_linear', 0.04)
         self.declare_parameter('slow_speed_scale', 0.55)
         self.declare_parameter('giveway_speed_scale', 0.50)
         self.declare_parameter('roundabout_speed_scale', 0.40)
@@ -87,12 +90,14 @@ class LineFollowerNode(Node):
         self._lost_scale = float(self.get_parameter('lost_speed_scale').value)
         self._stop_when_lost = bool(self.get_parameter('stop_when_lost').value)
         self._show_window = bool(self.get_parameter('show_window').value)
+        self._show_window = False  # Visualización desactivada: solo salida por terminal
 
         self._zebra_speed = float(self.get_parameter('zebra_speed').value)
         self._zebra_initial_straight_sec = float(self.get_parameter('zebra_initial_straight_sec').value)
         self._zebra_extra_advance_sec = float(self.get_parameter('zebra_extra_advance_sec').value)
         self._zebra_validation_timeout = float(self.get_parameter('zebra_validation_timeout').value)
         self._zebra_advance_after_signal_sec = float(self.get_parameter('zebra_advance_after_signal_sec').value)
+        self._zebra_advance_turn_sec = float(self.get_parameter('zebra_advance_turn_sec').value)
         self._zebra_forward_action_sec = float(self.get_parameter('zebra_forward_action_sec').value)
         self._zebra_roi_y_start = float(self.get_parameter('zebra_roi_y_start').value)
         self._zebra_min_blob_area = float(self.get_parameter('zebra_min_blob_area').value)
@@ -106,6 +111,8 @@ class LineFollowerNode(Node):
         self._turn_hold = float(self.get_parameter('turn_hold').value)
         self._turn_omega = float(self.get_parameter('turn_omega').value)
         self._turn_linear = float(self.get_parameter('turn_linear').value)
+        self._zebra_turn_angle = float(self.get_parameter('zebra_turn_angle').value)
+        self._zebra_turn_linear = float(self.get_parameter('zebra_turn_linear').value)
         self._slow_speed_scale = float(self.get_parameter('slow_speed_scale').value)
         self._giveway_speed_scale = float(self.get_parameter('giveway_speed_scale').value)
         self._roundabout_speed_scale = float(self.get_parameter('roundabout_speed_scale').value)
@@ -157,6 +164,7 @@ class LineFollowerNode(Node):
         self._zebra_crossing_counter = 0
 
         self._cmd_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        self._at_zebra_pub = self.create_publisher(Bool, '/at_zebra', 10)
         qos = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,
             history=QoSHistoryPolicy.KEEP_LAST,
@@ -172,7 +180,7 @@ class LineFollowerNode(Node):
         self._sign_cmd_sub = self.create_subscription(Int32, '/sign_command', self._sign_cmd_callback, 10)
 
         if self._show_window:
-            cv2.namedWindow(WINDOW_TITLE, cv2.WINDOW_AUTOSIZE)
+            pass
 
         self.get_logger().info('LineFollower priority listo: semáforo > señales > línea')
 
@@ -301,14 +309,14 @@ class LineFollowerNode(Node):
     def _show_and_maybe_exit(self, vis, text):
         if not self._show_window:
             return
-        cv2.putText(vis, text, (10, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
-        cv2.imshow(WINDOW_TITLE, vis)
-        key = cv2.waitKey(1) & 0xFF
-        if key == 27 or key == ord('q'):
-            raise SystemExit
 
     # ------------------------------------------------------------------
     def _image_callback(self, msg: Image):
+        # Notificar al traffic_light_node si estamos en secuencia zebra
+        _az = Bool()
+        _az.data = self._zebra_active
+        self._at_zebra_pub.publish(_az)
+
         # PRIORIDAD 1: SEMÁFORO. Rojo manda sobre todo.
         if self._traffic_mult <= 0.01:
             self._publish_stop()
@@ -324,12 +332,10 @@ class LineFollowerNode(Node):
         sign_speed_scale, sign_tag = self._sign_speed_scale()
 
         frame = self._bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        if self._show_window and cv2.getWindowProperty(WINDOW_TITLE, cv2.WND_PROP_AUTOSIZE) < 0:
-            raise SystemExit
 
         small = cv2.resize(frame, None, fx=_PROC_SCALE, fy=_PROC_SCALE, interpolation=cv2.INTER_LINEAR)
 
-        # Detectar zebra antes que línea. Si hay zebra y no hay señal, ir recto.
+        # Detectar zebra antes que línea.
         zebra_vis, zebra_detected, zebra_y_pos = find_zebra(
             small,
             roi_y_start=self._zebra_roi_y_start,
@@ -346,8 +352,15 @@ class LineFollowerNode(Node):
         else:
             self._zebra_seen_frames = 0
 
-        # Si hay una vuelta pendiente y se detectó zebra, ahora sí ejecutar señal.
-        if zebra_detected and self._zebra_seen_frames >= self._zebra_debounce_frames and self._pending_turn_valid():
+        # FIX: solo llamar _start_turn directamente cuando execute_turn_only_on_zebra=False.
+        # Con execute_turn_only_on_zebra=True, la FSM de zebra gestiona todo el ciclo
+        # STOP → ADVANCE → ACTION, preservando _pending_turn para que has_signal=True.
+        if (
+            zebra_detected
+            and self._zebra_seen_frames >= self._zebra_debounce_frames
+            and self._pending_turn_valid()
+            and not self._execute_turn_only_on_zebra
+        ):
             self._start_turn(self._pending_turn)
 
         # Expirar vuelta pendiente si nunca apareció zebra.
@@ -364,9 +377,6 @@ class LineFollowerNode(Node):
             v = self._turn_linear * self._traffic_mult * stop_approach_scale * sign_speed_scale
             self._publish_cmd(v, omega)
             status = f'SIGN-{SIGN_NAMES[self._turn_active_cmd].upper()}'
-            vis = cv2.resize(zebra_vis, (frame.shape[1], frame.shape[0])) if self._show_window else None
-            if vis is not None:
-                self._show_and_maybe_exit(vis, f'{status} {sign_tag} v={v:.2f} w={omega:+.2f}')
             self.get_logger().info(f'{status} | v={v:.3f} w={omega:+.3f}')
             return
 
@@ -375,18 +385,13 @@ class LineFollowerNode(Node):
             self._reset_steering_filters()
             v = self._linear * self._traffic_mult * stop_approach_scale * sign_speed_scale
             self._publish_cmd(v, 0.0)
-            status = 'SIGN-FORWARD'
-            vis = cv2.resize(zebra_vis, (frame.shape[1], frame.shape[0])) if self._show_window else None
-            if vis is not None:
-                self._show_and_maybe_exit(vis, f'{status} {sign_tag} v={v:.2f} w=0.00')
-            self.get_logger().info(f'{status} | v={v:.3f} w=+0.000')
+            self.get_logger().info(f'SIGN-FORWARD | v={v:.3f} w=+0.000')
             return
 
         # ZEBRA: Gestión con ciclo de 2 cruces (reinicia cada 2 detecciones)
-        # Si se detectó el segundo cruce (validación), reiniciar contador para el siguiente ciclo
         if self._zebra_crossing_counter == 1 and zebra_detected and not self._zebra_active:
             self._zebra_crossing_counter = 0
-            self._zebra_seen_frames = 0  # Reset frames para NO entrar a inicializar nuevamente
+            self._zebra_seen_frames = 0
             self.get_logger().info('Segundo cruce detectado → reiniciar contador, próximo ciclo')
 
         if self._zebra_seen_frames >= self._zebra_debounce_frames and not self._zebra_active and self._zebra_crossing_counter == 0:
@@ -396,7 +401,11 @@ class LineFollowerNode(Node):
             self._zebra_has_signal = has_signal
             self._zebra_has_traffic = has_traffic
             self._zebra_action_type = self._pending_turn if has_signal else 0
-            self._zebra_phase = 'ADVANCE'
+            # Limpiar pending_turn para que no vuelva a disparar _start_turn
+            # si la zebra sigue visible durante STOP o ADVANCE.
+            self._pending_turn = 0
+            self._pending_turn_time = None
+            self._zebra_phase = 'ADVANCE' if (not has_signal and not has_traffic) else 'STOP'
             self._zebra_phase_start = now
             case = 3 if (has_signal and has_traffic) else (2 if has_signal else 1)
             self.get_logger().info(f'ZEBRA detectada y={zebra_y_pos:+.2f} → CASO {case}')
@@ -407,33 +416,40 @@ class LineFollowerNode(Node):
             v = 0.0
             omega = 0.0
 
-            # CASO 1: Avanza 30cm, espera validación (2º cruce), si no hay avanza 10cm más
+            # CASO 1: Parada 1.5s + Avance 40cm
             if not self._zebra_has_signal and not self._zebra_has_traffic:
                 status = 'ZEBRA-CASO1'
+                stop_duration = 1.5
+                advance_duration = self._zebra_initial_straight_sec
 
-                if phase_elapsed < self._zebra_initial_straight_sec:
-                    # Fase 1: Avanza 30cm
-                    v = self._linear * self._zebra_speed * self._traffic_mult * stop_approach_scale * sign_speed_scale
-                    status = 'ZEBRA-AVANCE-1'
-                elif phase_elapsed < self._zebra_initial_straight_sec + self._zebra_validation_timeout:
-                    # Fase 2: Espera segundo cruce (validación)
-                    status = 'ZEBRA-VALIDANDO'
+                if phase_elapsed < stop_duration:
                     v = 0.0
-                elif phase_elapsed < self._zebra_initial_straight_sec + self._zebra_validation_timeout + self._zebra_extra_advance_sec:
-                    # Fase 3: No detectó segundo cruce, avanza 10cm más
+                    status = 'ZEBRA-STOP'
+                elif phase_elapsed < stop_duration + advance_duration:
                     v = self._linear * self._zebra_speed * self._traffic_mult * stop_approach_scale * sign_speed_scale
-                    status = 'ZEBRA-AVANCE-2'
+                    status = 'ZEBRA-AVANCE'
                 else:
-                    # Finaliza primer cruce - incrementar contador para esperar segundo
                     self._zebra_active = False
                     self._zebra_phase = 'NONE'
                     self._zebra_crossing_counter = 1
                     self.get_logger().info('ZEBRA-CASO1 completado → esperar segundo cruce')
 
-            # CASO 2 y 3: Avanza + acción (con señal ± semáforo)
+            # CASO 2 y 3: Frena + Avanza + acción (con señal ± semáforo)
             else:
-                if self._zebra_phase == 'ADVANCE':
-                    if phase_elapsed < self._zebra_advance_after_signal_sec:
+                if self._zebra_phase == 'STOP':
+                    if phase_elapsed < 2.0:
+                        status = 'ZEBRA-STOP'
+                        v = 0.0
+                    else:
+                        self._zebra_phase = 'ADVANCE'
+                        self._zebra_phase_start = now
+
+                elif self._zebra_phase == 'ADVANCE':
+                    if self._zebra_action_type in (1, 2):
+                        advance_sec = self._zebra_advance_turn_sec - 0.05 / max(0.001, self._linear * self._zebra_speed)
+                    else:
+                        advance_sec = self._zebra_advance_after_signal_sec
+                    if phase_elapsed < advance_sec:
                         status = 'ZEBRA-AVANCE'
                         v = self._linear * self._zebra_speed * self._traffic_mult * stop_approach_scale * sign_speed_scale
                     else:
@@ -445,21 +461,23 @@ class LineFollowerNode(Node):
                     status = 'ZEBRA-ACTION'
 
                     if action == 1:  # LEFT
-                        giro_time = 1.57 / max(0.1, self._turn_omega)
+                        giro_time = self._zebra_turn_angle / max(0.1, self._turn_omega)
                         if phase_elapsed < giro_time:
                             status = 'ZEBRA-LEFT'
                             omega = self._turn_omega
+                            v = 0.0
                         else:
-                            self._zebra_active = False
-                            self._zebra_phase = 'NONE'
+                            self._zebra_phase = 'ADVANCE_2'
+                            self._zebra_phase_start = now
                     elif action == 2:  # RIGHT
-                        giro_time = 1.57 / max(0.1, self._turn_omega)
+                        giro_time = self._zebra_turn_angle / max(0.1, self._turn_omega)
                         if phase_elapsed < giro_time:
                             status = 'ZEBRA-RIGHT'
                             omega = -self._turn_omega
+                            v = 0.0
                         else:
-                            self._zebra_active = False
-                            self._zebra_phase = 'NONE'
+                            self._zebra_phase = 'ADVANCE_2'
+                            self._zebra_phase_start = now
                     elif action == 3:  # FORWARD
                         if phase_elapsed < self._zebra_forward_action_sec:
                             status = 'ZEBRA-FORWARD'
@@ -483,14 +501,18 @@ class LineFollowerNode(Node):
                         self._zebra_active = False
                         self._zebra_phase = 'NONE'
 
-            # Mostrar estado
+                elif self._zebra_phase == 'ADVANCE_2':
+                    if phase_elapsed < self._zebra_advance_turn_sec:
+                        status = 'ZEBRA-AVANCE2'
+                        v = self._linear * self._zebra_speed * self._traffic_mult * stop_approach_scale * sign_speed_scale
+                    else:
+                        self._zebra_active = False
+                        self._zebra_phase = 'NONE'
+
             if self._zebra_active:
                 self._reset_steering_filters()
                 self._publish_cmd(v, omega)
                 self.get_logger().info(f'{status}')
-                vis = cv2.resize(zebra_vis, (frame.shape[1], frame.shape[0])) if self._show_window else None
-                if vis is not None:
-                    self._show_and_maybe_exit(vis, f'{status} {sign_tag} v={v:.3f} w={omega:+.3f}')
                 return
 
         # PRIORIDAD 3: seguidor de línea.
@@ -576,4 +598,4 @@ def main(args=None):
 
 
 if __name__ == '__main__':
-    main()
+    main()  

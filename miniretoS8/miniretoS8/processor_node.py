@@ -53,36 +53,39 @@ class ProcessorNode(Node):
         # Ventana/modelo/inferencia
         self.declare_parameter('show_window', False)
         self.declare_parameter('model_path', '')
-        self.declare_parameter('imgsz', 960)
-        self.declare_parameter('yolo_conf', 0.10)
+        self.declare_parameter('imgsz', 640)  # Reducido de 960 para velocidad
+        self.declare_parameter('yolo_conf', 0.25)  # Aumentado de 0.10 para reducir falsos positivos
         self.declare_parameter('iou', 0.45)
         self.declare_parameter('max_det', 80)
         self.declare_parameter('augment', False)
 
         # Modo ultra-far
-        self.declare_parameter('far_mode', True)
-        self.declare_parameter('yolo_upscale', 2.0)
-        self.declare_parameter('tile_mode', 'light')  # off | light | aggressive
-        self.declare_parameter('inference_every_n', 2)
+        self.declare_parameter('far_mode', False)  # Desactivado para velocidad
+        self.declare_parameter('yolo_upscale', 1.0)  # Reducido de 2.0 (sin upscaling)
+        self.declare_parameter('tile_mode', 'off')  # Desactivado para velocidad (no procesar parches)
+        self.declare_parameter('inference_every_n', 1)  # Corre YOLO en cada frame para detectar mejor
 
         # Confirmación/hold. Para señales lejanas usamos hold largo para guardarlas antes de zebra.
-        self.declare_parameter('min_conf', 0.22)
-        self.declare_parameter('fast_confirm_conf', 0.45)
-        self.declare_parameter('confirm_frames', 1)
+        self.declare_parameter('min_conf', 0.20)  # Valor intermedio: detecta más señales sin falsas positivas
+        self.declare_parameter('fast_confirm_conf', 0.45)  # Requiere confianza decente
+        self.declare_parameter('confirm_frames', 2)  # 2 frames para confirmar
         self.declare_parameter('hold_sec', 1.20)
         self.declare_parameter('direction_hold_sec', 7.00)
         self.declare_parameter('stop_hold_sec', 0.80)
+        # Confianza mínima exclusiva para STOP (más alta para evitar falsos del semáforo rojo)
+        self.declare_parameter('stop_min_conf', 0.92)
 
         # ROI de señales: conservar más imagen que antes para detectar desde lejos.
         self.declare_parameter('roi_top_ratio', 0.00)
-        self.declare_parameter('roi_bottom_ratio', 0.85)
+        self.declare_parameter('roi_bottom_ratio', 0.90)  # Captura más arriba para señales lejanas
         self.declare_parameter('roi_x_margin', 0.00)
 
         # Score. Antes el área pesaba mucho; para lejos usamos raíz del área para no castigar tanto boxes pequeñas.
-        self.declare_parameter('favor_near', 20.0)
+        self.declare_parameter('favor_near', 10.0)  # Reduce penalización de señales lejanas
         self.declare_parameter('log_only_changes', True)
 
         self._show_window = bool(self.get_parameter('show_window').value)
+        self._show_window = False  # Visualización desactivada: solo salida por terminal
         self._model_path = str(self.get_parameter('model_path').value).strip()
         self._imgsz = int(self.get_parameter('imgsz').value)
         self._yolo_conf = float(self.get_parameter('yolo_conf').value)
@@ -99,6 +102,7 @@ class ProcessorNode(Node):
         self._hold_sec = float(self.get_parameter('hold_sec').value)
         self._direction_hold_sec = float(self.get_parameter('direction_hold_sec').value)
         self._stop_hold_sec = float(self.get_parameter('stop_hold_sec').value)
+        self._stop_min_conf = float(self.get_parameter('stop_min_conf').value)
         self._roi_top_ratio = float(self.get_parameter('roi_top_ratio').value)
         self._roi_bottom_ratio = float(self.get_parameter('roi_bottom_ratio').value)
         self._roi_x_margin = float(self.get_parameter('roi_x_margin').value)
@@ -138,6 +142,7 @@ class ProcessorNode(Node):
         self._last_name = {sid: '' for sid in range(1, 8)}
         self._last_logged_state = None
 
+        self._at_zebra = False
         self._stop_pub = self.create_publisher(Float32, '/stop_sign', 10)
         self._slow_pub = self.create_publisher(Bool, '/slow_sign', 10)
         self._giveway_pub = self.create_publisher(Bool, '/giveway_sign', 10)
@@ -151,6 +156,7 @@ class ProcessorNode(Node):
             durability=QoSDurabilityPolicy.VOLATILE,
         )
         self._sub = self.create_subscription(Image, '/camera/image_raw', self._image_callback, qos)
+        self._zebra_sub = self.create_subscription(Bool, '/at_zebra', self._zebra_callback, 10)
 
         if self._show_window:
             cv2.namedWindow(WINDOW_TITLE, cv2.WINDOW_AUTOSIZE)
@@ -160,6 +166,9 @@ class ProcessorNode(Node):
             f'imgsz={self._imgsz} upscale={self._yolo_upscale:.1f} tile={self._tile_mode} '
             f'every={self._inference_every_n} hold_dir={self._direction_hold_sec:.1f}s'
         )
+
+    def _zebra_callback(self, msg: Bool):
+        self._at_zebra = bool(msg.data)
 
     def _seconds_since(self, stamp):
         return (self.get_clock().now() - stamp).nanoseconds * 1e-9
@@ -187,6 +196,13 @@ class ProcessorNode(Node):
             conf = float(confidences[i])
             if conf < self._min_conf:
                 continue
+            # STOP (sid=4): ignorar en cruce de zebra (semáforo rojo confunde a YOLO)
+            # y exigir confianza alta fuera de cruce
+            if sid == 4:
+                if self._at_zebra:
+                    continue
+                if conf < self._stop_min_conf:
+                    continue
 
             x1, y1, x2, y2 = [float(v) for v in boxes[i]]
             area_ratio = max(0.0, (x2 - x1) * (y2 - y1)) / max(1.0, img_area)
@@ -246,11 +262,32 @@ class ProcessorNode(Node):
         )
         if (not self._log_only_changes) or state != self._last_logged_state:
             self._last_logged_state = state
-            self.get_logger().info(
-                f'YOLO ultra-far state | stop={stop_ratio:.5f} slow={slow_msg.data} '
-                f'giveway={giveway_msg.data} roundabout={roundabout_msg.data} '
-                f'cmd={SIGN_NAMES.get(sign_cmd, sign_cmd)} conf={self._last_conf.get(sign_cmd, 0.0):.2f}'
-            )
+
+            # Mostrar solo la mejor señal detectada en este momento
+            best_signal = 'NONE'
+            best_conf = 0.0
+
+            # Encontrar la mejor señal activa
+            active_signals = []
+            if self._is_active(4):  # STOP
+                active_signals.append(('STOP', self._last_conf[4]))
+            if self._is_active(6):  # ROADWORK
+                active_signals.append(('ROADWORK', self._last_conf[6]))
+            if self._is_active(5):  # YIELD
+                active_signals.append(('YIELD', self._last_conf[5]))
+            if self._is_active(7):  # ROUNDABOUT
+                active_signals.append(('ROUNDABOUT', self._last_conf[7]))
+            if self._is_active(1):  # LEFT
+                active_signals.append(('LEFT', self._last_conf[1]))
+            if self._is_active(2):  # RIGHT
+                active_signals.append(('RIGHT', self._last_conf[2]))
+            if self._is_active(3):  # FORWARD
+                active_signals.append(('FORWARD', self._last_conf[3]))
+
+            if active_signals:
+                best_signal, best_conf = max(active_signals, key=lambda x: x[1])
+
+            self.get_logger().info(f'Señal: {best_signal} conf={best_conf:.2f}')
 
         if self._show_window and display is not None:
             text = (

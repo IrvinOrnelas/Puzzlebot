@@ -32,16 +32,16 @@ _MODEL: Optional[YOLO] = None
 _NAMES = None
 _MODEL_PATH: Optional[str] = None
 
-_CONF = 0.10
-_IMGSZ = 960
+_CONF = 0.05  # Más bajo para detectar señales lejanas
+_IMGSZ = 1280  # Imagen más grande
 _IOU = 0.45
 _MAX_DET = 60
 _AUGMENT = False
 
 # Modo lejano: además del ROI completo, corre inferencia en recortes ampliados.
 _FAR_MODE = True
-_UPSCALE = 2.0
-_TILE_MODE = 'light'  # off | light | aggressive
+_UPSCALE = 3.0  # Ampliación más agresiva
+_TILE_MODE = 'aggressive'  # off | light | aggressive - más agresivo
 _MIN_PATCH_W = 80
 _MIN_PATCH_H = 80
 
