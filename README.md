@@ -113,7 +113,7 @@ Mapeo de clases:
 
 ## Dependencias
 
-- ROS 2 (Foxy / probado en Jetson Nano con Ubuntu 18.04 + ROS 2 Foxy)
+- ROS 2 (Foxy)
 - Python 3.8
 - `rclpy`, `sensor_msgs`, `cv_bridge`, `geometry_msgs`, `std_msgs`
 - `opencv-python`
